@@ -109,7 +109,7 @@ public class IPUtils {
             int[] contadorSubred
     ) throws DocumentException {
 
-        doc.add(new Paragraph("Debug: " + ip + "/" + prefijo, font));
+        doc.add(new Paragraph("Para: " + ip + "/" + prefijo, font));
 
         if (prefijo > 30) {
             return;
@@ -118,7 +118,7 @@ public class IPUtils {
         int capacidad = IPUtils.calcularHosts(32 - prefijo);
         String linea = " ".repeat(nivel * 2) + ip + "/" + prefijo;
 
-        if (!necesidades.isEmpty() && capacidad == necesidades.get(0) + 2) {
+        if (!necesidades.isEmpty() && capacidad >= necesidades.get(0) + 2) {
             linea += " ==> Subred " + contadorSubred[0]++;
             necesidades.remove(0);
             doc.add(new Paragraph(linea, font));
